@@ -1,7 +1,7 @@
 package controller;
 
 import entity.Vacante;
-import model.CoderModel;
+
 import model.EmpresaModel;
 import model.VacanteModel;
 

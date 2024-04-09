@@ -1,8 +1,7 @@
 package model;
 
-import database.CRUD;
+
 import database.ConfigDB;
-import entity.Coder;
 import entity.Empresa;
 
 import javax.swing.*;
