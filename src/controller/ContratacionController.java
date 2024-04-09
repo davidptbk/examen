@@ -2,9 +2,11 @@ package controller;
 
 import entity.Coder;
 import entity.Contratacion;
+import entity.Empresa;
 import entity.Vacante;
 import model.CoderModel;
 import model.ContratacionModel;
+import model.EmpresaModel;
 import model.VacanteModel;
 
 import javax.swing.*;
@@ -41,7 +43,7 @@ public class ContratacionController {
 
         ContratacionModel objContratacionModel = new ContratacionModel();
         VacanteModel objVacanteModel = new VacanteModel();
-
+        EmpresaModel objEmpresaModel = new EmpresaModel();
         int vacanteId = Integer.parseInt(JOptionPane.showInputDialog(objVacanteModel.findByVacantesActivas() + "\n Ingrese el id de la vacante que se contratara"));
         int coderId = Integer.parseInt(JOptionPane.showInputDialog(CoderController.getAllString() + "\n Ingrese el id de el Coder que tomara la vacante"));
         String estado = "activo";
@@ -51,7 +53,7 @@ public class ContratacionController {
 
         CoderModel objCoderModel = new CoderModel();
         Coder objCoder= objCoderModel.findById(coderId);
-
+        Empresa objEmpresa = objEmpresaModel.findEmpresaById(objVacante.getEmpresaId());
         if (objVacante == null){
             JOptionPane.showMessageDialog(null, "Vacante no encontrada");
         }else if (objCoder == null) {
@@ -72,10 +74,7 @@ public class ContratacionController {
 
                 //metodo que cambia el estado de vacante
                 objVacanteModel.changeEstadoInactivo(vacanteId);
-                JOptionPane.showMessageDialog(null, """
-                        Vacante ()
-                        
-                        """);
+                JOptionPane.showMessageDialog(null, "Vacante (Titulo: "+objVacante.getTitulo()+" descripcion "+ objVacante.getDecripcion()+ ")\nEmpresa: (nombre "+ objEmpresa.getNombre() +" ubicacion "+objEmpresa.getUbicacion()+")\nCoder: (nombre "+ objCoder.getNombre()+ " Apellidos "+objCoder.getApellidos()+" documento "+objCoder.getDocumento() +" tecnologia "+ objCoder.getCv() + "Salario coder "+ objContratacion.getSalario());
             }else {
                 JOptionPane.showMessageDialog(null,"El coder no cuenta con los conocimientos para esta vacante");
             }
