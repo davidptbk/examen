@@ -142,7 +142,7 @@ public class CoderModel implements CRUD {
         Coder objCoder= null;
 
         try {
-            String sql = "SELECT * FROM especialidad WHERE id = ?;";
+            String sql = "SELECT * FROM coder WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setInt(1, id);
 
