@@ -84,7 +84,7 @@ public class ContratacionModel implements CRUD {
 
                 objVacante.setId(objResult.getInt("vacante.id"));
                 objVacante.setTitulo(objResult.getString("vacante.titulo"));
-                objVacante.setDecripcion(objResult.getString("vacante.apellidos"));
+                objVacante.setDecripcion(objResult.getString("vacante.descripcion"));
                 objVacante.setDuracion(objResult.getString("vacante.duracion"));
                 objVacante.setEstado(objResult.getString("vacante.estado"));
                 objVacante.setTecnologia(objResult.getString("vacante.tecnologia"));
