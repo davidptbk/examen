@@ -22,7 +22,7 @@ public class ContratacionModel implements CRUD {
         Contratacion objContratacion = (Contratacion) obj;
 
         try {
-            String sql = "INSERT INTO cita (vacante_id, coder_id , fecha_aplicacion, estado, salario ) VALUES( ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO contratacion (vacante_id, coder_id , fecha_aplicacion, estado, salario ) VALUES( ?, ?, ?, ?, ?);";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql,
                     PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -173,10 +173,11 @@ public class ContratacionModel implements CRUD {
         Contratacion objContratacion = null;
 
         try {
-            String sql = "SELECT * FROM cita " +
-                    "INNER JOIN paciente ON paciente.id = cita.id_paciente " +
-                    "INNER JOIN medico ON medico.id = cita.id_medico " +
-                    "WHERE cita.id = ?;";
+            String sql = "SELECT * FROM contratacion " +
+                    "INNER JOIN vacante ON vacante.id = contratacion.vacante_id " +
+                    "INNER JOIN coder ON coder.id = contratacion.coder_id " +
+                    "INNER JOIN empresa ON empresa.id = vacante.empresa_id;"+
+                    "WHERE contratacion.id = ?;";
 
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setInt(1, id);
